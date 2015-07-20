@@ -272,7 +272,7 @@ $(function() {
 
 	$("body").on('parse-xml', function(event, data) {
 
-		Alert.hide();
+//		Alert.hide();
 		Breakpoints.hideOptions();
 
 		switch (data.command) { /* SWITCH - START */
@@ -440,6 +440,7 @@ $(function() {
 
 	function populateCodeView(data, offset) {
 		var lines = data.split('\n');
+		var output = [];
 		clearCodeView();
 
 		if (! offset) offset = 0;
@@ -456,8 +457,15 @@ $(function() {
 			html +=	'<span class="lineno" data-lineno="' + html_lineno + '">' + html_lineno + '</span>';
 			html += '<span class="codeline"><pre>' + htmlEntities(lines[l]) + '</pre></span>';
 			html += '</div>';
-			$("#codeview").append(html);
+			output.push(html);
+			//$("#codeview").append(html);
+
 		}
+		var msg = {key:'populateCodeView', html : output};
+
+		console.log('sendMessage: populateCodeView');
+		window.sendMessage(msg);
+
 
 		Global.fileNameCurrentlyLoaded = filename;
 		Breakpoints.highlight();
@@ -474,6 +482,7 @@ $(function() {
 
 
 	function refreshPopup(popup) {
+		return;
 		var $popup = $(popup);
 		var bodyWidth = $("body").width();
 		var offset = $popup.data("offset") || 30;

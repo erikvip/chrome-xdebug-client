@@ -4,14 +4,23 @@
 Ext.define('Cxc.view.Source', {
     xtype : 'xdebugsource',
     extend: 'Ext.panel.Panel', 
-    html : 'asdf', 
+    frame : true,
+    html : '', 
     initComponent: function() {
         this.callParent();
-        this.relayEvents(Ext.getDoc(), ['message']);
+
+        Ext.EventManager.on(window, 'message',  this.onMessage, this);
     },
-    listeners : {
-        'message' : function() {
-            console.log('message');
+    onMessage: function(e, me) {
+        var d = e.browserEvent.data; 
+//        console.log(d);
+  //      console.log(this);
+
+        if (d.key=='populateCodeView') {
+            this.update(d.html);
+//            console.log(d.html);
+            //Append data
+//            this.update(this.body.dom.innerHTML + d.html);
         }
     }
 });

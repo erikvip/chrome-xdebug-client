@@ -163,7 +163,7 @@ $(function() {
 				var received_transaction_id = $(xml).find("response").attr("transaction_id");
 				if (received_transaction_id == transactionId) {
 
-					Alert.hide();
+//					Alert.hide();
 
 					console.log("received_transaction_id: " + received_transaction_id);
 					//console.log(xml);
@@ -199,7 +199,7 @@ $(function() {
 	function send_command(command, options, callback) {
 		var request = "";
 
-		Alert.busy("Working...");
+//		Alert.busy("Working...");
 
 		currentCommandOptions = options;
 		currentCommandCallback = callback;
@@ -310,7 +310,7 @@ $(function() {
     /**
      * Post Message Actions
      */
-    function sendMessage(data) {
+    window.sendMessage = function(data) {
         var iframe = document.getElementById('sandbox-frame');
 
         iframeWindow = iframe.contentWindow;
@@ -321,7 +321,7 @@ $(function() {
     function extensionBaseUrl(data) {
         //data.result = chrome.extension.getURL('/');
         data.result = '/';
-        sendMessage(data);
+        window.sendMessage(data);
     }
 
 	$('body').on("xdebug-init", function() {

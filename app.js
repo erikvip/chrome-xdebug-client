@@ -27,16 +27,24 @@ Ext.data.PostMessage.request({
             'Cxc.view.Source', 
             'Cxc.view.Toolbar'
         ]);
-        window.addEventListener('message', function(e) {
-            console.log('App.js event:');console.log(e);
-        });
         //Main init
         Ext.application({
             name: 'Cxc',
 //            appFolder: baseUrl + 'app/Cxc',
            
             launch:function() {
-                Ext.create('Cxc.view.Viewport');
+                var vp = Ext.create('Cxc.view.Viewport');
+
+                window.addEventListener('message', function(e) {
+
+                    vp.fireEvent('message');
+//                    vp.items.each(function(){ 
+  //                      console.log(this);
+    //                    this.fireEvent('message'); 
+                    //});
+//                    console.log('App.js event:');console.log(e);
+                });
+
             }
         });
     }

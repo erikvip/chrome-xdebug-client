@@ -34,7 +34,7 @@ var Global = (function() {
 			if (this.isProcessing()) {
 				return;
 			} else {
-				Alert.busy("Working...");
+				//Alert.busy("Working...");
 				callback();
 			}
 		},

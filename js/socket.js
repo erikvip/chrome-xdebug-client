@@ -95,7 +95,7 @@ $(function() {
 	}
 
 
-	function listen_and_connect() {
+	function listen_and_connect(data) {
 		ip = Config.get("listening_ip");
 		port = parseInt(Config.get("listening_port"));
 
@@ -107,8 +107,14 @@ $(function() {
 			serverSocketId = createInfo.socketId;
 
 			chrome.sockets.tcpServer.listen(serverSocketId, ip, port, function(result) {
-				//console.log("Listen result: "); console.log(result);
-				showListeningAlert();
+				console.log("Listen result: "); console.log(result);
+				//showListeningAlert();
+				chrome.sockets.tcpServer.getInfo(serverSocketId, function(socketInfo) {
+					//console.log("Socket info: "); console.log(socketInfo);
+					data.result = socketInfo;
+					sendMessage(data);
+				});
+
 			});
 
 			chrome.sockets.tcpServer.onAccept.addListener(function(acceptInfo) {
@@ -266,6 +272,57 @@ $(function() {
 
 
 	// HANDLE EVENTS
+    window.addEventListener('message', function(e) {
+        var data= e.data,
+            key = data.key;
+
+        console.log('[index.js] Post Message received with key ' + key);
+
+        switch (key) {
+            case 'extension-baseurl':
+                extensionBaseUrl(data);
+                break;
+
+            case 'xdebug-listen':
+                listen_and_connect(data);
+                break;
+
+            case 'upnp-browse':
+                upnpBrowse(data);
+                break;
+
+            case 'play-media':
+                playMedia(data);
+                break;
+
+            case 'download-media':
+                downloadMedia(data);
+                break;
+
+            case 'cancel-download':
+                cancelDownload(data);
+                break;
+
+            default:
+                console.log('[index.js] unidentified key for Post Message: "' + key + '"');
+        }
+    }, false);	
+    /**
+     * Post Message Actions
+     */
+    function sendMessage(data) {
+        var iframe = document.getElementById('sandbox-frame');
+
+        iframeWindow = iframe.contentWindow;
+
+        iframeWindow.postMessage(data, '*');
+    }
+
+    function extensionBaseUrl(data) {
+        //data.result = chrome.extension.getURL('/');
+        data.result = '/';
+        sendMessage(data);
+    }
 
 	$('body').on("xdebug-init", function() {
 		initCommandQueue();
@@ -275,7 +332,7 @@ $(function() {
 
 	$('body').on("xdebug-listen", function() {
 		listen_and_connect();
-		$('body').trigger('socket_status', {status: 'live'});
+//		$('body').trigger('socket_status', {status: 'live'});
 	});
 
 	$('body').on("xdebug-step_over", function() {

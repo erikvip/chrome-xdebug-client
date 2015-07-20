@@ -1,14 +1,19 @@
 (function() {
 
-	chrome.app.runtime.onLaunched.addListener(function() {
-		chrome.app.window.create("main.html", {
+	chrome.app.runtime.onLaunched.addListener(function(launchData) {
+		var opt = {
 			width: 800,
 			height: 800,
 			type: "panel",
 			id: "Xdebug_Chrome_App",
 			singleton: true
-		});
+		};
+	    chrome.app.window.create('main.html', opt, function (win) {
+	        win.launchData = launchData;
+	    });
 	});
+
+
 
 	// set default config values
 	chrome.storage.local.get(null, function(data) {

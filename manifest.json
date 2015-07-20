@@ -1,28 +1,31 @@
 {
-	"manifest_version": 2,
-	"minimum_chrome_version": "33",
-	"name": "Xdebug",
-	"description": "Xdebug Client",
-	"version": "2.3",
-	"offline_enabled": true,
-	"app": {
-		"background": {
-			"scripts": ["js/background.js"]
-		}
-	},
-	"sockets": {
-		"tcp": {},
-		"tcpServer": {
-			"listen": "*:9000"
-		}
-	},
-	"permissions": [
-		"storage",
-		"http://*/"
-	],
-	"icons": {
-		"16": "img/icon_16.png",
-		"48": "img/icon_48.png",
-		"128": "img/icon_128.png"
-	}
+    "manifest_version": 2,
+    "minimum_chrome_version": "33",
+    "name": "Xdebug",
+    "description": "Xdebug Client",
+    "version": "2.3",
+    "offline_enabled": true,
+    "app": {
+        "background": {
+            "scripts": ["js/background.js"]
+        }
+    },
+    "sandbox": {
+        "pages": ["sandbox.html"]
+    },
+    "sockets": {
+        "tcp": {},
+        "tcpServer": {
+            "listen": "*:9000"
+        }
+    },
+    "permissions": [
+        "storage",
+        "http://*/"
+    ],
+    "icons": {
+        "16": "img/icon_16.png",
+        "48": "img/icon_48.png",
+        "128": "img/icon_128.png"
+    }
 }

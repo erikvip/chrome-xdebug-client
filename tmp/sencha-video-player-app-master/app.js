@@ -7,6 +7,11 @@
 Ext.require([
     'Ext.util.KeyNav'
 ]);
+
+Ext.onReady(function() {
+    console.log('asdf');
+});
+
 Ext.data.PostMessage.request({
     key     : 'extension-baseurl',
     success : function(baseUrl) {

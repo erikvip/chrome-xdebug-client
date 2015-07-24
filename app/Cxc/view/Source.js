@@ -4,7 +4,8 @@
 Ext.define('Cxc.view.Source', {
     xtype : 'xdebugsource',
     extend: 'Ext.panel.Panel', 
-    frame : true,
+    frame : false,
+    bodyStyle : 'overflow: scroll',
     html : '', 
     initComponent: function() {
         this.callParent();

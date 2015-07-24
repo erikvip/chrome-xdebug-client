@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "minimum_chrome_version": "33",
-    "name": "Xdebug",
+    "name": "XdebugEXT",
     "description": "Xdebug Client",
     "version": "2.3",
     "offline_enabled": true,

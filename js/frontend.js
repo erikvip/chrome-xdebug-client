@@ -440,7 +440,7 @@ $(function() {
 
 	function populateCodeView(data, offset) {
 		var lines = data.split('\n');
-		var output = [];
+		var output = "";
 		clearCodeView();
 
 		if (! offset) offset = 0;
@@ -457,13 +457,14 @@ $(function() {
 			html +=	'<span class="lineno" data-lineno="' + html_lineno + '">' + html_lineno + '</span>';
 			html += '<span class="codeline"><pre>' + htmlEntities(lines[l]) + '</pre></span>';
 			html += '</div>';
-			output.push(html);
+			output += html;
 			//$("#codeview").append(html);
 
 		}
 		var msg = {key:'populateCodeView', html : output};
 
 		console.log('sendMessage: populateCodeView');
+
 		window.sendMessage(msg);
 
 

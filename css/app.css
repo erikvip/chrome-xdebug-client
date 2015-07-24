@@ -1,0 +1,44 @@
+.line-wrapper {
+    float: left;
+    width: 100%;
+}
+
+.active-line {
+    background: #ff9966;
+    box-shadow: 0px 3px 8px #aaaaaa;
+}
+
+
+.lineno {
+    background: #eeeeee;
+    float: left;
+    margin-right: 1%;
+    padding-right: 1%;
+    text-align: right;
+    width: 4%;
+}
+
+.lineno.breakpoint {
+    background: #ff8888;
+}
+.codeline {
+    float: right;
+    width: 94%;
+}
+
+    .codeline pre {
+        margin: 0px;
+        tab-size: 4;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+    }
+
+        .codeline pre em {
+            background: #E6FF00;
+            font-style: normal;
+        }
+
+        .codeline pre em.active {
+            font-weight: bold;
+        }
+

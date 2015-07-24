@@ -35,15 +35,25 @@ Ext.data.PostMessage.request({
             launch:function() {
                 var vp = Ext.create('Cxc.view.Viewport');
 
-                window.addEventListener('message', function(e) {
+                Ext.getBody().on('keydown', function(e,t) {
+                    console.log( e.getKey());
+                    e.preventDefault();
+                    if (e.button == 110) {
+                        var btn = Ext.getCmp('xdebug-button-step_over')
+                        btn.handler(btn);
+                    }
+                        
+                });                 
 
-                    vp.fireEvent('message');
+  //              window.addEventListener('message', function(e) {
+
+//                    vp.fireEvent('message');
 //                    vp.items.each(function(){ 
   //                      console.log(this);
     //                    this.fireEvent('message'); 
                     //});
 //                    console.log('App.js event:');console.log(e);
-                });
+//                });
 
             }
         });

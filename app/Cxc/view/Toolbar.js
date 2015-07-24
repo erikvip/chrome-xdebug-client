@@ -15,7 +15,6 @@ Ext.define('Cxc.view.Toolbar', {
     },
     items: [{
         xtype: 'label',
-        cls: 'sencha-logo',
         text: 'XDebug'
     },{
         text: 'Listen',
@@ -35,9 +34,16 @@ Ext.define('Cxc.view.Toolbar', {
             }       
         }
     },{
-        text: 'Cancel',
-        itemId: 'cancel-download-btn',
-        disabled: true
+        text: 'Step Over',
+        id : 'xdebug-button-step_over',
+        handler : function() {
+            Ext.data.PostMessage.request({
+                key     : 'xdebug-step_over',
+                success : function(d) { 
+                    console.log(arguments);
+                }
+            });
+        }
     },{
         xtype: 'label',
         cls: 'messages-ct',

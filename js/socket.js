@@ -287,21 +287,10 @@ $(function() {
                 listen_and_connect(data);
                 break;
 
-            case 'upnp-browse':
-                upnpBrowse(data);
+            case 'xdebug-step_over':
+                send_command("step_over");
                 break;
 
-            case 'play-media':
-                playMedia(data);
-                break;
-
-            case 'download-media':
-                downloadMedia(data);
-                break;
-
-            case 'cancel-download':
-                cancelDownload(data);
-                break;
 
             default:
                 console.log('[index.js] unidentified key for Post Message: "' + key + '"');
@@ -330,14 +319,14 @@ $(function() {
 		showListeningAlert();
 	});
 
-	$('body').on("xdebug-listen", function() {
-		listen_and_connect();
+//	$('body').on("xdebug-listen", function() {
+//		listen_and_connect();
 //		$('body').trigger('socket_status', {status: 'live'});
-	});
+//	});
 
-	$('body').on("xdebug-step_over", function() {
-		send_command("step_over");
-	});
+//	$('body').on("xdebug-step_over", function() {
+//		send_command("step_over");
+//	});
 
 	$('body').on("xdebug-step_out", function() {
 		send_command("step_out");

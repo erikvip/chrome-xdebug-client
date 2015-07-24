@@ -8,15 +8,21 @@ Ext.define('Cxc.view.Viewport',{
         xtype : 'xdebugtoolbar', 
         region : 'north'
     },{
-        xtype: 'panel',
-        region: 'west'
+        xtype : 'panel', 
+        region : 'east',
+        title : 'Variables',
+        collapsible : true, 
+        width: 200
     },{
-        xtype: 'container',
-        itemId: 'viewport-center',
-        layout: 'fit',
-        region: 'center',
-        items: {
-            xtype: 'xdebugsource'
-        }
+        xtype: 'xdebugsource',
+        title : 'Source',
+//        layout: 'fit',
+        region: 'center'
+    },{
+        xtype: 'panel',
+        region: 'south', 
+        title : 'Stacktrace',
+        height: 100,
+        collapsible : true
     }]
 });

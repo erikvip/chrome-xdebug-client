@@ -284,6 +284,7 @@ $(function() {
                 break;
 
             case 'xdebug-listen':
+            	initCommandQueue();
                 listen_and_connect(data);
                 break;
 
@@ -293,6 +294,10 @@ $(function() {
 
             case 'xdebug-step_into':
                 send_command("step_into");
+                break;
+
+            case 'xdebug-step_out':
+                send_command("step_out");
                 break;
 
 
@@ -332,13 +337,13 @@ $(function() {
 //		send_command("step_over");
 //	});
 
-	$('body').on("xdebug-step_out", function() {
-		send_command("step_out");
-	});
+//	$('body').on("xdebug-step_out", function() {
+//		send_command("step_out");
+//	});
 
-	$('body').on("xdebug-step_into", function() {
-		send_command("step_into");
-	});
+//	$('body').on("xdebug-step_into", function() {
+//		send_command("step_into");
+//	});
 
 	$('body').on("xdebug-run", function() {
 		send_command("run");

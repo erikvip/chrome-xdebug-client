@@ -23,6 +23,7 @@ Ext.define('Cxc.view.Toolbar', {
         iconCls: 'ico-download-button-arrow',
         handler : function() {
             if (this.pressed) {
+                this.setText('Stop');
                 Ext.data.PostMessage.request({
                     key     : 'xdebug-listen',
                     params  : {}, 
@@ -30,8 +31,9 @@ Ext.define('Cxc.view.Toolbar', {
                         console.log(arguments);
                     }
                 });
-
-            }       
+            } else {
+                this.setText('Listen');
+            }
         }
     },{
         text: 'Step Over',
@@ -47,6 +49,14 @@ Ext.define('Cxc.view.Toolbar', {
         handler : function() {
             Ext.data.PostMessage.request({
                 key     : 'xdebug-step_into'
+            });
+        }
+    },{
+        text: 'Step Out',
+        id : 'xdebug-button-step_out',
+        handler : function() {
+            Ext.data.PostMessage.request({
+                key     : 'xdebug-step_out'
             });
         }
     },{

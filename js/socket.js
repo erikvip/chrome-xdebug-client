@@ -291,6 +291,10 @@ $(function() {
                 send_command("step_over");
                 break;
 
+            case 'xdebug-step_into':
+                send_command("step_into");
+                break;
+
 
             default:
                 console.log('[index.js] unidentified key for Post Message: "' + key + '"');
@@ -315,8 +319,8 @@ $(function() {
 
 	$('body').on("xdebug-init", function() {
 		initCommandQueue();
-		Alert.hide();
-		showListeningAlert();
+//		Alert.hide();
+//		showListeningAlert();
 	});
 
 //	$('body').on("xdebug-listen", function() {

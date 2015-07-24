@@ -38,10 +38,15 @@ Ext.define('Cxc.view.Toolbar', {
         id : 'xdebug-button-step_over',
         handler : function() {
             Ext.data.PostMessage.request({
-                key     : 'xdebug-step_over',
-                success : function(d) { 
-                    console.log(arguments);
-                }
+                key     : 'xdebug-step_over'
+            });
+        }
+    },{
+        text: 'Step Into',
+        id : 'xdebug-button-step_into',
+        handler : function() {
+            Ext.data.PostMessage.request({
+                key     : 'xdebug-step_into'
             });
         }
     },{

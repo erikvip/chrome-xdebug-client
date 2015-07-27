@@ -8,7 +8,7 @@ Ext.define('Cxc.view.Viewport',{
         xtype : 'xdebugtoolbar', 
         region : 'north'
     },{
-        xtype : 'panel', 
+        xtype : 'xdebugvariables', 
         region : 'east',
         title : 'Variables',
         collapsible : true, 

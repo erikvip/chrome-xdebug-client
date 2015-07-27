@@ -25,7 +25,8 @@ Ext.data.PostMessage.request({
             'Ext.util.KeyNav', 
             'Cxc.view.Viewport', 
             'Cxc.view.Source', 
-            'Cxc.view.Toolbar'
+            'Cxc.view.Toolbar', 
+            'Cxc.view.Variables'
         ]);
         //Main init
         Ext.application({

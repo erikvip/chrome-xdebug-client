@@ -277,6 +277,28 @@ $(function() {
 
 		switch (data.command) { /* SWITCH - START */
 
+			case "context_get":
+				var contextnames = []; 
+				var contextid = $(data.xml).find('response').attr('context');
+				$(data.xml).find('response').children().each(function() {
+					contextnames.push({
+						id : $(this).attr('name'), 
+						text : $(this).attr('name'), 
+						value : $(this).text()
+					});
+				});
+				window.sendMessage({key: 'context_names', data : contextnames, context : contextid});
+				break;
+			case "context_names":
+				var contextnames = []; 
+				$(data.xml).find('response').children().each(function() {
+					contextnames.push({
+						'id' : $(this).attr('id'), 
+						'name' : $(this).attr('name')
+					});
+				});
+				window.sendMessage({key: 'context_names', data : contextnames, context : 'root'});
+				break;
 			case "watches_eval":
 			case "feature_set":
 				break;

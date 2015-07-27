@@ -274,7 +274,9 @@ $(function() {
 	// HANDLE EVENTS
     window.addEventListener('message', function(e) {
         var data= e.data,
-            key = data.key;
+            key = data.key
+            params = data.params;
+
 
         console.log('[index.js] Post Message received with key ' + key);
 
@@ -298,6 +300,12 @@ $(function() {
 
             case 'xdebug-step_out':
                 send_command("step_out");
+                break;
+            case 'xdebug-context_names':
+                send_command("context_names");
+                break;
+            case 'xdebug-context_get':
+                send_command("context_get", "-d " + params.id);
                 break;
 
 
